@@ -10,22 +10,49 @@
         href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
         rel="stylesheet"
     >
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .content-wrapper {
+            flex: 1;
+        }
+
+        footer {
+            background-color: #212529;
+            color: #fff;
+        }
+
+        footer a {
+            color: #17a2b8;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        footer .fw-bold {
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <!-- <a class="navbar-brand" href="/">Hirik Bazars</a> -->
-        <a href="/"><img  src="{% static 'assets/IMG-20250121-WA0000.jpg' %}" height="90px" width="140px" alt="Hirik Bazar"></a>
-
+        <a href="/"><img src="{% static 'assets/IMG-20250121-WA0000.jpg' %}" height="90px" width="140px" alt="Hirik Bazar"></a>
     </nav>
 
-    <div class="container mt-4">
+    <div class="content-wrapper container mt-4">
         {% block content %}
         <!-- Content goes here -->
         {% endblock %}
-        
     </div>
 
-    <footer class="bg-dark text-white pt-5 pb-3">
+    <footer class="text-white pt-5 pb-3">
         <div class="container">
             <div class="row">
                 <!-- Best Categories Section -->
@@ -39,7 +66,7 @@
                         <li><a href="#" class="text-decoration-none text-white">Fashion</a></li>
                     </ul>
                 </div>
-    
+
                 <!-- Our Pages Section -->
                 <div class="col-md-4 mb-4">
                     <h5 class="text-uppercase fw-bold mb-3">Our Pages</h5>
@@ -50,17 +77,17 @@
                         <li><a href="#" class="text-decoration-none text-white">Return Policy</a></li>
                     </ul>
                 </div>
-    
+
                 <!-- Contact Us Section -->
                 <div class="col-md-4 mb-4">
                     <h5 class="text-uppercase fw-bold mb-3">Contact Us</h5>
                     <p><strong>Website:</strong> <a href="#" class="text-decoration-none text-white">hirikbazarbd.com</a></p>
                     <p><strong>Address:</strong> Dhaka, Bangladesh</p>
-                    <p><strong>Email:</strong> <a href="mailto:hotinga24@gmail.com" class="text-decoration-none text-white">hirikbazarbd@gmail.com</a></p>
+                    <p><strong>Email:</strong> <a href="mailto:hirikbazarbd@gmail.com" class="text-decoration-none text-white">hirikbazarbd@gmail.com</a></p>
                     <p><strong>Call:</strong> <a href="tel:019000000000" class="text-decoration-none text-white">019000000000</a></p>
                 </div>
             </div>
-    
+
             <!-- Footer Bottom -->
             <div class="row">
                 <div class="col-12 text-center mt-4">
@@ -70,8 +97,7 @@
             </div>
         </div>
     </footer>
-    
-    
+
     <!-- Bootstrap JS and dependencies -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
