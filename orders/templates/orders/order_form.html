@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="text-center mb-4">পণ্য অর্ডার করুন</h1>
+<div class="card mx-auto" style="max-width: 600px;">
+    <div class="card-body">
+        <h5 class="card-title">{{ product.name }}</h5>
+        <p class="card-text"><strong>মূল্যঃ {{ product.price }} টাকা</strong></p>
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-success w-100">অর্ডার কনফার্ম করুন</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
