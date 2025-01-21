@@ -72,7 +72,8 @@ ROOT_URLCONF = 'hirik_bazar.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],  # Add this if you have a common 'templates' folder
+        # 'DIRS': [os.path.join(BASE_DIR, 'templates')],  # Add this if you have a common 'templates' folder
+        'DIRS': [BASE_DIR / "templates"],
         'APP_DIRS': True,  # Allow searching in app directories
         'OPTIONS': {
             'context_processors': [
