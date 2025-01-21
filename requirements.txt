@@ -4,5 +4,6 @@ django-crispy-forms
 gunicorn
 packaging
 pillow
+python-decouple
 sqlparse
 tzdata
