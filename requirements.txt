@@ -1,0 +1,8 @@
+asgiref
+Django
+django-crispy-forms
+gunicorn
+packaging
+pillow
+sqlparse
+tzdata
