@@ -17,13 +17,14 @@ Including another URLconf
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from orders import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.product_list, name='product_list'),
     path('order/<int:pk>/', views.order_product, name='order_product'),
+    path('', include('orders.urls')),
     path('success/', views.success_page, name='success_page'),
 ]
 

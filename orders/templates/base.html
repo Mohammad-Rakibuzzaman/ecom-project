@@ -14,7 +14,7 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <!-- <a class="navbar-brand" href="/">Hirik Bazars</a> -->
-        <img src="{% static 'assets/IMG-20250121-WA0000.jpg' %}" height="115px" width="180px" alt="Hirik Bazar">
+        <a href="/"><img  src="{% static 'assets/IMG-20250121-WA0000.jpg' %}" height="90px" width="140px" alt="Hirik Bazar"></a>
 
     </nav>
 
@@ -22,8 +22,56 @@
         {% block content %}
         <!-- Content goes here -->
         {% endblock %}
+        
     </div>
 
+    <footer class="bg-dark text-white pt-5 pb-3">
+        <div class="container">
+            <div class="row">
+                <!-- Best Categories Section -->
+                <div class="col-md-4 mb-4">
+                    <h5 class="text-uppercase fw-bold mb-3">Best Categories</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-decoration-none text-white">Herbal Product</a></li>
+                        <li><a href="#" class="text-decoration-none text-white">Laptop</a></li>
+                        <li><a href="#" class="text-decoration-none text-white">Kitchen</a></li>
+                        <li><a href="#" class="text-decoration-none text-white">Grocery</a></li>
+                        <li><a href="#" class="text-decoration-none text-white">Fashion</a></li>
+                    </ul>
+                </div>
+    
+                <!-- Our Pages Section -->
+                <div class="col-md-4 mb-4">
+                    <h5 class="text-uppercase fw-bold mb-3">Our Pages</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-decoration-none text-white">About us</a></li>
+                        <li><a href="#" class="text-decoration-none text-white">Terms and Conditions</a></li>
+                        <li><a href="#" class="text-decoration-none text-white">Privacy Policy</a></li>
+                        <li><a href="#" class="text-decoration-none text-white">Return Policy</a></li>
+                    </ul>
+                </div>
+    
+                <!-- Contact Us Section -->
+                <div class="col-md-4 mb-4">
+                    <h5 class="text-uppercase fw-bold mb-3">Contact Us</h5>
+                    <p><strong>Website:</strong> <a href="#" class="text-decoration-none text-white">hirikbazarbd.com</a></p>
+                    <p><strong>Address:</strong> Dhaka, Bangladesh</p>
+                    <p><strong>Email:</strong> <a href="mailto:hotinga24@gmail.com" class="text-decoration-none text-white">hirikbazarbd@gmail.com</a></p>
+                    <p><strong>Call:</strong> <a href="tel:019000000000" class="text-decoration-none text-white">019000000000</a></p>
+                </div>
+            </div>
+    
+            <!-- Footer Bottom -->
+            <div class="row">
+                <div class="col-12 text-center mt-4">
+                    <p class="mb-0">© 2025. All rights reserved by <a href="#" class="text-decoration-none text-white">Hirik Bazar BD</a></p>
+                    <p>Developed By <a href="#" class="text-decoration-none text-white fw-bold">HirikBazarBD</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    
     <!-- Bootstrap JS and dependencies -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>

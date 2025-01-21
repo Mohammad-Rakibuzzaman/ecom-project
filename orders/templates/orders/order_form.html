@@ -5,6 +5,7 @@
 <div class="card mx-auto" style="max-width: 600px;">
     <div class="card-body">
         <h5 class="card-title">{{ product.name }}</h5>
+        
         <p class="card-text"><strong>মূল্যঃ {{ product.price }} টাকা</strong></p>
         <form method="POST">
             {% csrf_token %}
@@ -13,4 +14,35 @@
         </form>
     </div>
 </div>
+<!-- <div class="container">
+    <h1>Order {{ product.name }}</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-success">Confirm Order</button>
+    </form> -->
+<!-- 
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Image</th>
+                <th>Product</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                
+            </tr>
+        </tbody>
+    </table> -->
+   
+</div>
+
+
+
+
+
 {% endblock %}
