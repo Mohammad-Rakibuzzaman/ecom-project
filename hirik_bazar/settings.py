@@ -28,7 +28,14 @@ SECRET_KEY = config('SECRET_KEY')
 DEBUG = config('DEBUG')
 
 ALLOWED_HOSTS = ["*"]
-CSRF_TRUSTED_ORIGINS = ['https://hirikbazarbd.onrender.com', 'localhost', 'https://*.127.0.0.1']
+# CSRF_TRUSTED_ORIGINS = ['https://hirikbazarbd.onrender.com', 'localhost', 'https://*.127.0.0.1']
+CSRF_TRUSTED_ORIGINS = [
+    'https://hirikbazarbd.onrender.com',
+    'http://localhost',
+    'http://127.0.0.1',
+    'https://127.0.0.1'
+]
+
 
 
 # Application definition
@@ -72,12 +79,31 @@ ROOT_URLCONF = 'hirik_bazar.urls'
 # ]
 
 
+# TEMPLATES = [
+#     {
+#         'BACKEND': 'django.template.backends.django.DjangoTemplates',
+#         # 'DIRS': [os.path.join(BASE_DIR, 'templates')],  # Add this if you have a common 'templates' folder
+#         'DIRS': [BASE_DIR / "templates"],
+#         'APP_DIRS': True,  # Allow searching in app directories
+#         'OPTIONS': {
+#             'context_processors': [
+#                 'django.template.context_processors.debug',
+#                 'django.template.context_processors.request',
+#                 'django.contrib.auth.context_processors.auth',
+#                 'django.contrib.messages.context_processors.messages',
+#             ],
+#         },
+#     },
+# ]
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        # 'DIRS': [os.path.join(BASE_DIR, 'templates')],  # Add this if you have a common 'templates' folder
-        'DIRS': [BASE_DIR / "templates"],
-        'APP_DIRS': True,  # Allow searching in app directories
+        'DIRS': [
+            BASE_DIR / 'templates',  # Ensure this points to your project-level templates
+            # os.path.join(BASE_DIR, 'templates')
+        ],
+        'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
@@ -88,6 +114,13 @@ TEMPLATES = [
         },
     },
 ]
+
+
+
+
+
+
+
 
 WSGI_APPLICATION = 'hirik_bazar.wsgi.application'
 
@@ -103,10 +136,17 @@ WSGI_APPLICATION = 'hirik_bazar.wsgi.application'
 # }
 
 
-DATABASES = {
-    'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
-}
+##for local testing
+# DATABASES = {
+#     'default': dj_database_url.parse(os.environ.get("DATABASE_URL", "sqlite:///db.sqlite3"))
+# }
 
+# DATABASES = {
+#     'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
+# }
+DATABASES = {
+    'default': dj_database_url.parse(config("DATABASE_URL"))
+}
 
 
 # Password validation
@@ -143,12 +183,16 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 STATICFILES_DIRS = [BASE_DIR / "static"]
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # This directory is used for collectstatic
 
 # Media files settings
 MEDIA_URL = '/media/'  # URL to access media files
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  # Directory to store media files
+
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
