@@ -18,6 +18,13 @@
             flex-direction: column;
         }
 
+        #navss { 
+            display: flex; 
+            width: 100%; 
+            justify-content: center; 
+        }
+        
+
         .content-wrapper {
             flex: 1;
         }
@@ -42,8 +49,8 @@
     </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a href="/"><img src="{% static 'assets/IMG-20250121-WA0000.jpg' %}" height="90px" width="140px" alt="Hirik Bazar"></a>
+    <nav id="navss" class="navbar navbar-expand-lg navbar-light bg-light">
+        <a href="/"><img src="{% static 'assets/IMG-20250121-WA0000.jpg' %}" height="120px" width="140px" alt="Hirik Bazar" style="display: ;"></a>
     </nav>
 
     <div class="content-wrapper container mt-4">
