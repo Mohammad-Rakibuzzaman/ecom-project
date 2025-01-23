@@ -8,20 +8,21 @@
         <div class="card h-100">
             <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
             <div class="card-body">
-                <!-- <a href=""><h5 class="card-title">{{ product.name }}</h5></a> -->
-                
                 <a href="{% url 'product_detail' product.id %}">
                     <h5 class="card-title">{{ product.name }}</h5>
                 </a>
                 <p class="card-text">{{ product.description }}</p>
                 <p class="card-text"><strong>Price: {{ product.price }}</strong></p>
-                <!-- <a href="{% url 'order_product' product.id %}" class="btn btn-primary">Order Now</a> -->
                 <a href="{% url 'order_product' product.id %}" 
-                class="btn btn-primary" 
-                onclick="fbq('track', 'OrderNowClick', {content_name: '{{ product.name }}'})">
-                 Order Now
-             </a>
-             
+                    class="btn btn-primary" 
+                    onclick="fbq('track', 'OrderNowClick', {
+                        content_name: '{{ product.name }}',
+                        content_ids: ['{{ product.id }}'],
+                        value: {{ product.price }},
+                        currency: 'BDT'
+                    })">
+                    Order Now
+                </a>
             </div>
         </div>
     </div>

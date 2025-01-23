@@ -20,34 +20,13 @@
             <form method="POST">
                 {% csrf_token %}
                 {{ form.as_p }}
-
-                <!-- Display base product price -->
-                <p class="card-text text-center mt-4" style="font-weight: bold; font-size: 1.2rem; color: #5A5A5A;">
-                    
-                </p><br>
-               
-
-                <!-- Display delivery charge if calculated -->
-                {% if delivery_charge is not None %}
-                <p class="card-text">
-                    <strong>ডেলিভারি চার্জঃ {{ delivery_charge }} টাকা </strong>
-                </p>
-                {% endif %}
-
-                <!-- Display total price dynamically -->
-                <!-- <p class="card-text text-center mt-4" style="font-weight: bold; font-size: 1.2rem; color: #5A5A5A;">
-                    আপনার সর্বমোট মূল্যঃ {{ total_price }} টাকা
-                </p> -->
-
-                <script>
-                    function trackDeliveryCharge() {
-                        fbq('track', 'DeliveryChargeCalculated', {
-                            content_name: '{{ product.name }}'
-                        });
-                    }
-                </script>
-
-                <button type="submit" class="btn btn-success w-100 mt-4" style="font-size: 1rem;" onclick="trackDeliveryCharge()">
+                <button type="submit" class="btn btn-success w-100 mt-4" style="font-size: 1rem;" 
+                    onclick="fbq('track', 'Purchase', {
+                        content_name: '{{ product.name }}',
+                        content_ids: ['{{ product.id }}'],
+                        value: {{ product.price }},
+                        currency: 'BDT'
+                    })">
                     অর্ডার কনফার্ম করুন
                 </button>
             </form>

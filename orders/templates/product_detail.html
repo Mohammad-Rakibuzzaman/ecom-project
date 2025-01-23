@@ -1,59 +1,52 @@
-
-
-
-{% extends "base.html" %}
-
-{% block content %}
-<div class="container py-5">
-    <!-- Product Section -->
-    <div class="row mb-5">
-        <!-- Image Section -->
-        <div class="col-12 text-center mb-4">
-            <img src="{{ product.image.url }}" alt="{{ product.name }}" height="600px" width="450px" class="img-fluid rounded shadow-lg">
-        </div>
-
-        <!-- Price and Order Section -->
-        <div class="col-12 text-center mb-4">
-            <h2 class="fw-bold text-primary">৳{{ product.price }}</h2>
-            <!-- <a href="{% url 'order_product' product.id %}" class="btn btn-lg btn-success px-5 py-2">
-                Order Now
-            </a> -->
-
-            <a href="{% url 'order_product' product.id %}" 
-            class="btn btn-lg btn-success px-5 py-2"
-            onclick="fbq('track', 'OrderNowClick', {content_name: '{{ product.name }}'})">
-                Order Now
-            </a>
-
-
-        </div>
-
-        <!-- Description Section -->
-        <div class="col-12">
-            <div class="p-4 text-light" style="background-color: rgba(0, 0, 0, 0.7); border-radius: 10px;">
-                <h3 class="fw-bold">Description</h3>
-                <p>{{ product.description }}</p>
-            </div>
-        </div>
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ product.name }}</title>
+    {% block extra_head %}
+        <!-- Facebook Pixel Code -->
+        <script>
+            !function(f,b,e,v,n,t,s)
+            {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+            n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+            if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+            n.queue=[];t=b.createElement(e);t.async=!0;
+            t.src=v;s=b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t,s)}(window, document,'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+            fbq('init', '532313139822798');
+            fbq('track', 'PageView');
+        </script>
+        <noscript>
+            <img height="1" width="1" style="display:none"
+                 src="https://www.facebook.com/tr?id=532313139822798&ev=PageView&noscript=1"/>
+        </noscript>
+    {% endblock %}
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>{{ product.name }}</h1>
+        <p>Price: {{ product.price }} BDT</p>
+        <button 
+            class="btn btn-primary" 
+            id="orderNowButton"
+        >
+            Order Now
+        </button>
     </div>
 
-    <!-- Related Products Section -->
-    <div class="row">
-        <div class="col-12 mb-3">
-            <h3 class="fw-bold text-center">Related Products</h3>
-        </div>
-        {% for related_product in related_products %}
-        <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
-            <div class="card h-100">
-                <img src="{{ related_product.image.url }}" class="card-img-top" alt="{{ related_product.name }}">
-                <div class="card-body text-center">
-                    <h5 class="card-title">{{ related_product.name }}</h5>
-                    <p class="text-primary">৳{{ related_product.price }}</p>
-                    <a href="{% url 'product_detail' related_product.id %}" class="btn btn-sm btn-primary">View</a>
-                </div>
-            </div>
-        </div>
-        {% endfor %}
-    </div>
-</div>
-{% endblock %}
+    <!-- Facebook Pixel Tracking for "Order Now" Button -->
+    <script>
+        document.getElementById('orderNowButton').addEventListener('click', function() {
+            fbq('track', 'AddToCart', {
+                content_name: '{{ product.name }}',
+                content_ids: ['{{ product.id }}'],
+                value: {{ product.price }},
+                currency: 'BDT'
+            });
+        });
+    </script>
+</body>
+</html>
