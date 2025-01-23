@@ -6,4 +6,11 @@
     <p>আপনার অর্ডারের জন্য ধন্যবাদ। আমরা শীঘ্রই আপনার সাথে যোগাযোগ করব।</p>
     <a href="/" class="btn btn-primary mt-3">হোমপেজে ফিরে যান</a>
 </div>
+
+<script>
+    fbq('track', 'Purchase', {
+        content_name: 'Order Success',
+         // Replace total_price with the actual total price if available
+    });
+</script>
 {% endblock %}

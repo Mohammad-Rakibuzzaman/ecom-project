@@ -15,9 +15,17 @@
         <!-- Price and Order Section -->
         <div class="col-12 text-center mb-4">
             <h2 class="fw-bold text-primary">৳{{ product.price }}</h2>
-            <a href="{% url 'order_product' product.id %}" class="btn btn-lg btn-success px-5 py-2">
+            <!-- <a href="{% url 'order_product' product.id %}" class="btn btn-lg btn-success px-5 py-2">
+                Order Now
+            </a> -->
+
+            <a href="{% url 'order_product' product.id %}" 
+            class="btn btn-lg btn-success px-5 py-2"
+            onclick="fbq('track', 'OrderNowClick', {content_name: '{{ product.name }}'})">
                 Order Now
             </a>
+
+
         </div>
 
         <!-- Description Section -->

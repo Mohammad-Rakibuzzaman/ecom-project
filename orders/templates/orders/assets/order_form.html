@@ -39,7 +39,15 @@
                     আপনার সর্বমোট মূল্যঃ {{ total_price }} টাকা
                 </p> -->
 
-                <button type="submit" class="btn btn-success w-100 mt-4" style="font-size: 1rem;">
+                <script>
+                    function trackDeliveryCharge() {
+                        fbq('track', 'DeliveryChargeCalculated', {
+                            content_name: '{{ product.name }}'
+                        });
+                    }
+                </script>
+
+                <button type="submit" class="btn btn-success w-100 mt-4" style="font-size: 1rem;" onclick="trackDeliveryCharge()">
                     অর্ডার কনফার্ম করুন
                 </button>
             </form>
