@@ -32,6 +32,7 @@ urlpatterns = [
     path('success/', views.success_page, name='success_page'),
 ]
 
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 # Add this to serve media files
 if settings.DEBUG:
