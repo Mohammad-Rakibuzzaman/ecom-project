@@ -184,10 +184,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [BASE_DIR / 'static']
+# STATICFILES_DIRS = [BASE_DIR / 'static']
+STATICFILES_DIRS = [
+    BASE_DIR / "orders/static",
+]
 
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # This directory is used for collectstatic
+STATIC_ROOT = BASE_DIR / "staticfiles"  # This is where collectstatic will store files
 
 # Media files settings
 MEDIA_URL = '/media/'  # URL to access media files
