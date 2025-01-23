@@ -51,7 +51,11 @@ INSTALLED_APPS = [
     'orders',
 ]
 
+INSTALLED_APPS = INSTALLED_APPS + ['corsheaders']
+
+
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -59,6 +63,13 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+]
+
+CORS_ALLOWED_ORIGINS = [
+    'https://hirikbazarbd.onrender.com',   # Your production domain
+    'http://localhost',
+    'http://127.0.0.1',
+    'https://127.0.0.1'
 ]
 
 ROOT_URLCONF = 'hirik_bazar.urls'
