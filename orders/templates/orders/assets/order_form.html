@@ -1,45 +1,62 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="container mt-5">
-    <h1 class="text-center mb-4" style="font-weight: bold; color: #5A5A5A;">পণ্য অর্ডার করুন</h1>
-    <div class="card mx-auto shadow-lg" style="max-width: 600px; border-radius: 10px;">
-        <div class="card-body">
-            <h5 class="card-title text-center" style="font-weight: bold; font-size: 1.5rem; color: #343A40;">
-                {{ product.name }}
-            </h5>
-            <div class="text-center my-4">
-                <img src="{{ product.image.url }}" alt="{{ product.name }}" 
-                     class="img-fluid rounded shadow-lg" 
-                     style="height: 200px; width: auto; max-width: 100%; object-fit: cover;">
-                <br>
-                <strong>পণ্যের মূল্যঃ {{ product.price }} টাকা</strong>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '532313139822798');
+    fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=53231313982798&ev=PageView&noscript=1"
+  /></noscript>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>পণ্য অর্ডার করুন</title>
+  </head>
+<body>
+
+    <div class="container mt-5">
+        <h1 class="text-center mb-4" style="font-weight: bold; color: #5A5A5A;">পণ্য অর্ডার করুন</h1>
+        <div class="card mx-auto shadow-lg" style="max-width: 600px; border-radius: 10px;">
+            <div class="card-body">
+                <h5 class="card-title text-center" style="font-weight: bold; font-size: 1.5rem; color: #343A40;">
+                    {{ product.name }}
+                </h5>
+                <div class="text-center my-4">
+                    <img src="{{ product.image.url }}" alt="{{ product.name }}" 
+                         class="img-fluid rounded shadow-lg" 
+                         style="height: 200px; width: auto; max-width: 100%; object-fit: cover;">
+                    <br>
+                    <strong>পণ্যের মূল্যঃ {{ product.price }} টাকা</strong>
+                </div>
+                <hr>
+                <form method="POST">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button 
+                        type="submit" 
+                        class="btn btn-success w-100 mt-4" 
+                        style="font-size: 1rem;" 
+                        onclick="trackPurchase('{{ product.name }}', '{{ product.id }}', {{ product.price }})"
+                    >
+                        অর্ডার কনফার্ম করুন
+                    </button>
+                </form>
             </div>
-            <hr>
-            <form method="POST">
-                {% csrf_token %}
-                {{ form.as_p }}
-                <button 
-                    type="submit" 
-                    class="btn btn-success w-100 mt-4" 
-                    style="font-size: 1rem;" 
-                    onclick="trackPurchase('{{ product.name }}', '{{ product.id }}', {{ product.price }})"
-                >
-                    অর্ডার কনফার্ম করুন
-                </button>
-            </form>
         </div>
     </div>
-</div>
 
-<script>
-    function trackPurchase(productName, productId, productPrice) {
-        fbq('track', 'Purchase', {
-            content_name: productName,
-            content_ids: [productId],
-            value: productPrice,
-            currency: 'BDT'
-        });
-    }
-</script>
-{% endblock %}
+
+
+  </body>
+</html>
